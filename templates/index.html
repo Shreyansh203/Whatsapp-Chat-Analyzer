@@ -1,0 +1,146 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>WhatsApp Chat Analyzer</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-image: url('static/photo2.jpg');
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+        }
+
+        .overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+        }
+
+        .container {
+            width: 90%;
+            max-width: 800px;
+            background-color: rgba(255, 255, 255, 0.9);
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.05);
+            text-align: center;
+            position: relative;
+            z-index: 1;
+        }
+
+        h1 {
+            font-size: 2rem;
+            margin-bottom: 30px;
+            color: #333;
+        }
+
+        .welcome-message {
+            font-size: 1.2rem;
+            color: #666;
+            margin-bottom: 20px;
+        }
+
+        form {
+            margin-bottom: 30px;
+        }
+
+        .upload-button,
+        button[type=submit] {
+            background-color: #28D146;
+            color: white;
+            padding: 20px 40px;
+            font-size: 1.2rem;
+            cursor: pointer;
+            border: none;
+            border-radius: 8px;
+            transition: background-color 0.3s ease;
+        }
+
+        .upload-button:hover,
+        button[type=submit]:hover {
+            background-color: #24c041;
+        }
+
+        input[type=file] {
+            display: none;
+        }
+
+        .logout-link,
+        .summaries-link {
+            display: inline-block;
+            text-align: center;
+            margin-top: 30px;
+            padding: 12px 24px;
+            background-color: #4b8beb;
+            font-size: 1rem;
+            text-decoration: none;
+            color: white;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease;
+        }
+
+        .logout-link:hover,
+        .summaries-link:hover {
+            background-color: #1033ce;
+            color: #aaa;
+            border-color: #ccc;
+        }
+
+        header {
+            background-color: #000;
+            color: #fff;
+            padding: 10px 0;
+        }
+
+        footer {
+            background-color: #28D146;
+            color: #fff;
+            padding: 10px 0;
+            position: fixed;
+            bottom: 0;
+            text-align: center;
+            width: 100%;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="overlay"></div>
+    <div class="container">
+        <h1>WhatsApp Chat Analyzer</h1>
+        <div class="welcome-message">
+            Welcome, {{ current_user.username }}!
+        </div>
+        <form method="POST" enctype="multipart/form-data">
+            <label for="chat_file" class="upload-button">Choose File</label>
+            <input type="file" id="chat_file" name="chat_file" required onchange="displayFileName()">
+            <button type="submit" class="upload-button">Analyze Chat</button>
+        </form>
+        <div id="file-name"></div>
+        <a href="{{ url_for('summaries') }}" class="summaries-link">View Saved Summaries</a>
+        <a href="{{ url_for('logout') }}" class="logout-link">Logout</a>
+    </div>
+    <footer>
+        &copy; 2024 WhatsAppChatAnalyzer. All rights reserved.
+    </footer>
+
+    <script>
+        function displayFileName() {
+            const fileInput = document.getElementById('chat_file');
+            const fileName = fileInput.files[0].name;
+            document.getElementById('file-name').textContent = `Selected File: ${fileName}`;
+        }
+    </script>
+</body>
+
+</html>

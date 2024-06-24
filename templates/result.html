@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chat Analysis Result</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            margin: 20px;
+            max-width: 800px;
+            margin-left: auto;
+            margin-right: auto;
+            padding: 0 20px;
+            background-image: url('path/to/your/background-image.jpg');
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            background-attachment: fixed;
+            color: #333;
+        }
+
+        h1, h2 {
+            color: #333;
+            margin-bottom: 10px;
+            background-color: rgba(255, 255, 255, 0.8);
+            padding: 10px;
+            border-radius: 8px;
+        }
+
+        .welcome-message {
+            margin-bottom: 20px;
+            background-color: rgba(255, 255, 255, 0.8);
+            padding: 10px;
+            border-radius: 8px;
+        }
+
+        .stats-section {
+            display: flex;
+            justify-content: space-around;
+            flex-wrap: wrap;
+            margin-bottom: 20px;
+        }
+
+        .stat-card {
+            border-radius: 8px;
+            padding: 20px;
+            margin: 10px;
+            width: calc(50% - 20px);
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            text-align: center;
+            color: white;
+        }
+
+        .stat-card p {
+            font-size: 1.2em;
+            margin: 5px 0;
+        }
+
+        .stat-card span {
+            font-size: 1.5em;
+            font-weight: bold;
+            display: block;
+            margin-top: 10px;
+        }
+
+        .stat-card:nth-child(1) {
+            background-color: #FF5733; /* Bright red-orange */
+        }
+
+        .stat-card:nth-child(2) {
+            background-color: #33C1FF; /* Bright blue */
+        }
+
+        .stat-card:nth-child(3) {
+            background-color: #FF33A8; /* Bright pink */
+        }
+
+        .stat-card:nth-child(4) {
+            background-color: #33FF57; /* Bright green */
+        }
+
+        img {
+            max-width: 100%;
+            height: auto;
+            display: block;
+            margin-bottom: 15px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            border-radius: 8px;
+        }
+
+        a {
+            display: inline-block;
+            margin-top: 15px;
+            margin-right: 10px;
+            text-decoration: none;
+            padding: 8px 20px;
+            background-color: #4611d6;
+            color: white;
+            border-radius: 5px;
+            transition: background-color 0.3s ease;
+        }
+
+        a:hover {
+            background-color: #45a049;
+        }
+    </style>
+</head>
+<body style="background-color: #45a049;">
+    <header>
+        <h2>WhatsApp Chat Analyzer</h2>
+    </header>
+    <header>
+        <h1>Analysis for {{ current_user.username }}! , Whatsapp Chat</h1>
+        <!-- <div class="welcome-message">
+            Welcome, {{ current_user.username }}!
+        </div> -->
+    </header>
+    
+    <section class="stats-section">
+        <div class="stat-card">
+            <p>Number of Messages</p>
+            <span>{{ num_messages }}</span>
+        </div>
+        <div class="stat-card">
+            <p>Number of Words</p>
+            <span>{{ words }}</span>
+        </div>
+        <div class="stat-card">
+            <p>Number of Media Messages</p>
+            <span>{{ num_media_messages }}</span>
+        </div>
+        <div class="stat-card">
+            <p>Number of Links</p>
+            <span>{{ num_links }}</span>
+        </div>
+    </section>
+
+    <section>
+        <h2>Monthly Timeline</h2>
+        <img src="data:image/png;base64,{{ monthly_timeline_plot }}" alt="Monthly Timeline">
+    </section>
+
+    <section>
+        <h2>Daily Timeline</h2>
+        <img src="data:image/png;base64,{{ daily_timeline_plot }}" alt="Daily Timeline">
+    </section>
+
+    <section>
+        <h2>Most Busy Day</h2>
+        <img src="data:image/png;base64,{{ busy_day_plot }}" alt="Most Busy Day">
+    </section>
+
+    <section>
+        <h2>Most Busy Month</h2>
+        <img src="data:image/png;base64,{{ busy_month_plot }}" alt="Most Busy Month">
+    </section>
+
+    <section>
+        <h2>Activity Heatmap</h2>
+        <img src="data:image/png;base64,{{ heatmap_plot }}" alt="Activity Heatmap">
+    </section>
+
+    {% if busy_users_plot %}
+    <section>
+        <h2>Most Busy Users</h2>
+        <img src="data:image/png;base64,{{ busy_users_plot }}" alt="Most Busy Users">
+    </section>
+    {% endif %}
+
+    <section>
+        <h2>Wordcloud</h2>
+        <img src="data:image/png;base64,{{ wordcloud_plot }}" alt="Wordcloud">
+    </section>
+
+    <section>
+        <h2>Most Common Words</h2>
+        <img src="data:image/png;base64,{{ common_words_plot }}" alt="Most Common Words">
+    </section>
+
+    <section>
+        <h2>Emoji Analysis</h2>
+        <img src="data:image/png;base64,{{ emoji_pie_plot }}" alt="Emoji Analysis">
+    </section>
+
+    <footer>
+        <a href="{{ url_for('index') }}">Analyze Another Chat</a>
+        <a href="{{ url_for('logout') }}">Logout</a>
+    </footer>
+</body>
+</html>

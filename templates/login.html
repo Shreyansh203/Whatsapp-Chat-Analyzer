@@ -1,0 +1,199 @@
+<!-- <!doctype html>
+<html lang="en">
+<head>
+    <title>Login</title>
+    <style>
+        body {
+    font-family: Arial, sans-serif;
+    background-color: #f0f0f0;
+    text-align: center;
+    margin: 0;
+    padding-top: 150px;
+}
+
+h1 {
+    color: #333;
+}
+
+form {
+    width: 300px;
+    margin: 20px auto;
+    background: #fff;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+form div {
+    margin-bottom: 15px;
+}
+
+form label {
+    display: block;
+    font-weight: bold;
+    margin-bottom: 5px;
+}
+
+form input[type="text"],
+form input[type="password"] {
+    width: calc(100% - 12px);
+    padding: 6px;
+    font-size: 16px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+
+form input[type="submit"] {
+    width: 100%;
+    padding: 10px;
+    font-size: 16px;
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+form input[type="submit"]:hover {
+    background-color: #45a049;
+}
+
+a {
+    display: block;
+    margin-top: 10px;
+    color: #4CAF50;
+    text-decoration: none;
+}
+
+a:hover {
+    text-decoration: underline;
+}
+
+    </style>
+</head>
+<body>
+    <h1>Login</h1>
+    <form method="POST">
+        {{ form.hidden_tag() }}
+        <div>{{ form.username.label }} {{ form.username }}</div>
+        <div>{{ form.password.label }} {{ form.password }}</div>
+        <div>{{ form.submit }}</div>
+    </form>
+    <a href="{{ url_for('register') }}">Don't have an account? Register</a>
+</body>
+</html> -->
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login</title>
+    <style>
+        /* Your existing CSS styles */
+        body {
+            font-family: Arial, sans-serif;
+
+            background-color: #f0f0f0;
+            background-image: url('static/photo2.jpg');
+            text-align: center;
+            margin: 0;
+            
+        }
+
+        h1 {
+            color: white;
+        }
+
+        form {
+            width: 300px;
+            height: 250px;
+            margin: 20px auto;
+            background: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        form div {
+            margin-bottom: 15px;
+        }
+
+        form label {
+            display: block;
+            font-weight: bold;
+            margin-bottom: 5px;
+        }
+
+        form input[type="text"],
+        form input[type="password"] {
+            width: calc(100% - 12px);
+            padding: 6px;
+            font-size: 16px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+        }
+
+        form input[type="submit"] {
+            width: 100%;
+            padding: 10px;
+            font-size: 16px;
+            background-color: #28D146;;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+
+        form input[type="submit"]:hover {
+            background-color: #28D146;;
+        }
+
+        a {
+            display: block;
+            margin-top: 10px;
+            color:  #28D146;
+            text-decoration: none;
+        }
+
+        a:hover {
+            text-decoration: underline;
+        }
+
+        /* New styles for header and footer */
+        header {
+            background-color:#28D146;
+            color: #fff;
+            padding: 10px 0;
+        }
+
+        footer {
+            background-color: #28D146;
+            color: #fff;
+            padding: 10px 0;
+            position: fixed;
+            bottom: 0;
+            width: 100%;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h2>WhatsApp Chat Analyzer</h2>
+    </header>
+    <br><br>
+    <h1>Login</h1>
+    <form method="POST">
+        {{ form.hidden_tag() }}
+        <div>{{ form.username.label }} {{ form.username }}</div>
+        <br>
+        <div>{{ form.password.label }} {{ form.password }}</div>
+        <br>
+        <div>{{ form.submit }}</div>
+    </form>
+    <a href="{{ url_for('register') }}">Don't have an account? Register</a>
+    <footer>
+        &copy; 2024 WhatsAppChatAnalyzer. All rights reserved.
+    </footer>
+</body>
+</html>
+

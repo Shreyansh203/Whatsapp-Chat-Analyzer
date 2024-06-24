@@ -1,0 +1,47 @@
+<!-- summary.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Summary Details</title>
+</head>
+<body>
+    <h1>Summary Details</h1>
+    <p><strong>Selected User:</strong> {{ selected_user }}</p>
+    <p><strong>Number of Messages:</strong> {{ num_messages }}</p>
+    <p><strong>Words:</strong> {{ words }}</p>
+    <p><strong>Number of Media Messages:</strong> {{ num_media_messages }}</p>
+    <p><strong>Number of Links:</strong> {{ num_links }}</p>
+
+    <h2>Monthly Timeline</h2>
+    <img src="data:image/png;base64,{{ monthly_timeline_plot }}" alt="Monthly Timeline">
+
+    <h2>Daily Timeline</h2>
+    <img src="data:image/png;base64,{{ daily_timeline_plot }}" alt="Daily Timeline">
+
+    <h2>Most Busy Day</h2>
+    <img src="data:image/png;base64,{{ busy_day_plot }}" alt="Most Busy Day">
+
+    <h2>Most Busy Month</h2>
+    <img src="data:image/png;base64,{{ busy_month_plot }}" alt="Most Busy Month">
+
+    <h2>Activity Heatmap</h2>
+    <img src="data:image/png;base64,{{ heatmap_plot }}" alt="Activity Heatmap">
+
+    {% if busy_users_plot %}
+        <h2>Most Busy Users</h2>
+        <img src="data:image/png;base64,{{ busy_users_plot }}" alt="Most Busy Users">
+    {% endif %}
+
+    <h2>Wordcloud</h2>
+    <img src="data:image/png;base64,{{ wordcloud_plot }}" alt="Wordcloud">
+
+    <h2>Most Common Words</h2>
+    <img src="data:image/png;base64,{{ common_words_plot }}" alt="Most Common Words">
+
+    <h2>Emoji Analysis</h2>
+    <img src="data:image/png;base64,{{ emoji_pie_plot }}" alt="Emoji Analysis">
+
+    <a href="{{ url_for('summaries') }}">Back to Summaries</a>
+</body>
+</html>
